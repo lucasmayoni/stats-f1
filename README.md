@@ -1,1 +1,1 @@
-## F1 Stats using [http://ergast.com/mrd/](Ergast API)
+## F1 Stats using [Ergast API](http://ergast.com/mrd/)
