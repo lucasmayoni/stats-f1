@@ -1,3 +1,4 @@
+import { Table } from "react-bootstrap";
 import { IResult } from "../../models/interfaces";
 
 const ResultList = ({ raceResults }: { raceResults: IResult[] }) => {
@@ -7,11 +8,24 @@ const ResultList = ({ raceResults }: { raceResults: IResult[] }) => {
       {!raceResults.length ? (
         <p>No results</p>
       ) : (
-        <ul>
-          {raceResults.map((result) => (
-            <li key={result.position}>{result.Driver.code}</li>
-          ))}
-        </ul>
+        <Table>
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Driver</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            {raceResults.map((result) => (
+              <tr>
+                <td>{result.position}</td>
+                <td>{result.Driver.code}</td>
+                <td>{result.points}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       )}
     </div>
   );

@@ -9,7 +9,9 @@ const Results = () => {
   const [request, setRequest] = useState({ season: "", round: "" });
   const result = useQuery([], fetchSeasons);
   const seasons = result.data?.MRData.SeasonTable.Seasons ?? [];
-  const searchResult = useQuery(["search", request], fetchSearchResults);
+  const searchResult = useQuery(["search", request], fetchSearchResults, {
+    enabled: request.season !== "" && request.round !== "",
+  });
   const raceResults =
     searchResult.data?.MRData.RaceTable.Races[0].Results ?? [];
   return (
