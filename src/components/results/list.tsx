@@ -1,5 +1,4 @@
 import { Table } from "react-bootstrap";
-import { IResult } from "../../models/interfaces";
 import { useParams } from "react-router-dom";
 import fetchSearchResults from "../../api/fetchResults";
 import { useQuery } from "@tanstack/react-query";
