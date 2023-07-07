@@ -1,8 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import { Table, Badge } from "react-bootstrap";
-import fetchRaces from "../../api/fetchRaces";
-import { useParams } from "react-router-dom";
 import { IRace } from "../../models/interfaces";
+import { Link } from "react-router-dom";
 
 const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
   const date = new Date().toISOString().split("T")[0];
@@ -17,6 +15,7 @@ const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
             <th>Date</th>
             <th>Time</th>
             <th>Status</th>
+            <th>Results</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +35,11 @@ const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
                   <Badge bg="warning">Pending</Badge>
                 </td>
               )}
+              <td>
+                <Link to={`/results/${schedule.season}/${schedule.round}`}>
+                  <i className="bi bi-card-checklist"></i>
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

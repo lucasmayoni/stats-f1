@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DriversList from "./components/drivers/list";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DriversShow from "./components/drivers/show";
-import Results from "./components/results";
 import Schedules from "./components/races";
+import ResultList from "./components/results/list";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -54,7 +54,7 @@ function App() {
           <Routes>
             <Route path="/drivers/:year" element={<DriversList />} />
             <Route path="/drivers/show/:driverId" element={<DriversShow />} />
-            <Route path="/results" element={<Results />} />
+            <Route path="/results/:season/:round/" element={<ResultList />} />
             <Route path="/races" element={<Schedules />} />
           </Routes>
         </Container>

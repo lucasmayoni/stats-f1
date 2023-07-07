@@ -9,11 +9,12 @@ const Results = () => {
   const [request, setRequest] = useState({ season: "", round: "" });
   const result = useQuery([], fetchSeasons);
   const seasons = result.data?.MRData.SeasonTable.Seasons ?? [];
+  const sortedSeasons = seasons.sort((a, b) => b.season - a.season);
   const searchResult = useQuery(["search", request], fetchSearchResults, {
     enabled: request.season !== "" && request.round !== "",
   });
   const raceResults =
-    searchResult.data?.MRData.RaceTable.Races[0].Results ?? [];
+    searchResult.data?.MRData?.RaceTable?.Races[0]?.Results ?? [];
   return (
     <div>
       <Form
@@ -31,7 +32,7 @@ const Results = () => {
           <Col>
             <Form.Label>Year</Form.Label>
             <Form.Select name="season">
-              {seasons.map((season) => (
+              {sortedSeasons.map((season) => (
                 <option>{season.season}</option>
               ))}
             </Form.Select>
@@ -51,7 +52,7 @@ const Results = () => {
           </Col>
         </Row>
       </Form>
-      <ResultList raceResults={raceResults} />
+      {/* <ResultList raceResults={raceResults} /> */}
     </div>
   );
 };
