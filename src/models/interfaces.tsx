@@ -72,6 +72,18 @@ export interface IDriver {
   };
 }
 
+export interface ICiruit {
+  circuitId: string;
+  url: string;
+  circuitName: string;
+  Location: {
+    lat: number;
+    long: number;
+    locality: string;
+    country: string;
+  };
+}
+
 export interface IDriverStandings {
   MRData: {
     StandingsTable: {
@@ -94,6 +106,45 @@ export interface IDriverStandings {
           };
         };
       }[];
+    };
+  };
+}
+
+export interface IRace {
+  season: string;
+  round: number;
+  url: string;
+  raceName: string;
+  Circuit: ICiruit;
+  date: string;
+  time: string;
+  FirstPractice: {
+    date: string;
+    time: string;
+  };
+  SecondPractice: {
+    date: string;
+    time: string;
+  };
+  ThirdPractice: {
+    date: string;
+    time: string;
+  };
+  Qualifying: {
+    date: string;
+    time: string;
+  };
+  Sprint: {
+    date: string;
+    time: string;
+  };
+}
+
+export interface IRaceLists {
+  MRData: {
+    RaceTable: {
+      season: string;
+      Races: IRace[];
     };
   };
 }
