@@ -1,7 +1,13 @@
 {
   "name": "f1-stats-v2",
+  "description": "F1 Stats v2 using Ergast API",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Lucas Mayoni",
+    "email": "mayoni.lucas@gmail.com"
+  },
   "dependencies": {
     "@tanstack/react-query": "^4.29.12",
     "@testing-library/jest-dom": "^5.16.5",

@@ -11,22 +11,28 @@ const DriversList = () => {
     <Table striped bordered hover>
       <thead>
         <tr>
+          <th colSpan={5}>Drivers List for season {year}</th>
+        </tr>
+        <tr>
+          <th>Number </th>
           <th>Code</th>
           <th>Name</th>
-          <th>Number</th>
+          <th>Nationality</th>
           <th>Details</th>
         </tr>
       </thead>
       <tbody>
         {drivers.map((driver) => (
           <tr key={driver.driverId}>
+            <td>#&nbsp;{driver.permanentNumber}</td>
             <td>{driver.code}</td>
             <td>
               {driver.givenName} {driver.familyName}
             </td>
-            <td>{driver.permanentNumber}</td>
+            <td>{driver.nationality}</td>
             <td>
               <Button
+                size="sm"
                 variant="primary"
                 href={`/drivers/show/${driver.driverId}`}
               >
