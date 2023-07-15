@@ -1,18 +1,9 @@
-import { Table, Badge, OverlayTrigger, Popover } from "react-bootstrap";
+import { Table, Badge, OverlayTrigger, Popover, ListGroup, ListGroupItem} from "react-bootstrap";
 import { IRace } from "../../models/interfaces";
 import { Link } from "react-router-dom";
 
 const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
   const date = new Date().toISOString().split("T")[0];
-  const popover = (
-    <Popover id="popover-basic">
-      <Popover.Header as="h3">Popover right</Popover.Header>
-      <Popover.Body>
-        And here's some <strong>amazing</strong> content. It's very engaging.
-        right?
-      </Popover.Body>
-    </Popover>
-  );
   return (
     <div>
       <Table hover striped responsive bordered>
@@ -50,7 +41,19 @@ const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
                   rootClose={true}
                   trigger="click"
                   placement="left"
-                  overlay={popover}
+                  overlay={
+                    <Popover id="popover-basic" >
+                      <Popover.Header>
+                        Race Schedule
+                      </Popover.Header>
+                      <Popover.Body as="div">
+                       <ListGroup>
+                        <ListGroup.Item>Practice 1: {schedule.FirstPractice.date} {schedule.FirstPractice.time}</ListGroup.Item>
+                        <ListGroup.Item>Practice 2: {schedule.SecondPractice.date} {schedule.SecondPractice.time}</ListGroup.Item>
+                       </ListGroup>
+                        </Popover.Body>
+                      </Popover>
+                  }
                 >
                   <i className="fa-solid fa-clock"></i>
                 </OverlayTrigger>
