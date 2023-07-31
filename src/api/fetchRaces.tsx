@@ -6,7 +6,7 @@ const fetchRaces: QueryFunction<
   ["search", { season: string }]
 > = async ({ queryKey }) => {
   const { season } = queryKey[1];
-  const apiRes = await fetch(`http://ergast.com/api/f1/${season}.json`);
+  const apiRes = await fetch(`https://ergast.com/api/f1/${season}.json`);
 
   if (!apiRes.ok) {
     throw new Error("Schedules not found");
