@@ -18,29 +18,30 @@
     "@types/react": "^18.2.8",
     "@types/react-dom": "^18.2.4",
     "bootstrap": "^5.3.0",
-    "eslint": "8.24.0",
-    "eslint-config-prettier": "8.5.0",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.12.0",
     "react-scripts": "^5.0.1",
+    "typescript": "^5.1.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\""
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "engines": {
+    "node": ">=12.x.x <=18.x.x",
+    "npm": ">=6.0.0"
   },
+  "overrides": {
+    "typescript": "^5.1.6"
+  },
+  
   "browserslist": {
     "production": [
       ">0.2%",
