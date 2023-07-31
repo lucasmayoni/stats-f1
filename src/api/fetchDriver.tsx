@@ -9,6 +9,7 @@ const fetchDriver: QueryFunction<IDriver> = async ({ queryKey }) => {
     throw new Error("Driver fetch not ok");
   }
 
-  return apiRes.json();
+  const result = await apiRes.json();
+  return result.MRData.DriverTable.Drivers[0];
 };
 export default fetchDriver;

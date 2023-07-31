@@ -7,6 +7,7 @@ const DriversShow = () => {
   const { driverId } = useParams();
   const result = useQuery(["driverId", driverId], fetchDriver);
   const driver = result.data;
+  console.log(driver);
 
   return (
     <div>
