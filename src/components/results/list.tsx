@@ -14,7 +14,6 @@ const ResultList = () => {
   });
   const raceResults =
     searchResult.data?.MRData?.RaceTable?.Races[0]?.Results ?? [];
-  console.log(raceResults);
   return (
     <div>
       <h1>Results</h1>

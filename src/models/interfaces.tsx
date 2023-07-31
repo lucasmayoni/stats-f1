@@ -1,3 +1,22 @@
+export interface ICircuit {
+  circuitId: string;
+  url: string;
+  circuitName: string;
+  Location: {
+    lat: number;
+    long: number;
+    locality: string;
+    country: string;
+  };
+}
+
+export interface IConstructor {
+  constructorId: string;
+  url: string;
+  name: string;
+  nationality: string;
+}
+
 export interface IResult {
   number: string;
   position: string;
@@ -45,6 +64,37 @@ export interface IResultLists {
   };
 }
 
+export interface IQualifyingResult {
+  number: number;
+  position: number;
+  Driver: IDriver;
+  Constructor: IConstructor;
+  Q1: string;
+  Q2: string;
+  Q3: string;
+}
+
+export interface IQualifyingResultLists {
+  MRData: {
+    RaceTable: {
+      season: string;
+      round: string;
+      Races: [
+        {
+          season: string;
+          round: string;
+          url: string;
+          raceName: string;
+          Circuit: ICircuit;
+          date: string;
+          time: string;
+          QualifyingResults: IQualifyingResult[];
+        }
+      ];
+    };
+  };
+}
+
 export interface ISeasons {
   MRData: {
     SeasonTable: {
@@ -55,32 +105,23 @@ export interface ISeasons {
     };
   };
 }
+
 export interface IDriver {
-  MRData: {
-    DriverTable: {
-      Drivers: {
-        driverId: number;
-        permanentNumber: number;
-        code: string;
-        url: string;
-        givenName: string;
-        familyName: string;
-        dateOfBirth: string;
-        nationality: string;
-      }[];
-    };
-  };
+  driverId: string;
+  permanentNumber: number;
+  code: string;
+  url: string;
+  givenName: string;
+  familyName: string;
+  dateOfBirth: string;
+  nationality: string;
 }
 
-export interface ICiruit {
-  circuitId: string;
-  url: string;
-  circuitName: string;
-  Location: {
-    lat: number;
-    long: number;
-    locality: string;
-    country: string;
+export interface IDriverList {
+  MRData: {
+    DriverTable: {
+      Drivers: IDriver[];
+    };
   };
 }
 
@@ -115,7 +156,7 @@ export interface IRace {
   round: number;
   url: string;
   raceName: string;
-  Circuit: ICiruit;
+  Circuit: ICircuit;
   date: string;
   time: string;
   FirstPractice: {
@@ -146,5 +187,28 @@ export interface IRaceLists {
       season: string;
       Races: IRace[];
     };
+  };
+}
+
+export interface ISchedule {
+  FirstPractice: {
+    date: string;
+    time: string;
+  };
+  SecondPractice: {
+    date: string;
+    time: string;
+  };
+  ThirdPractice?: {
+    date: string;
+    time: string;
+  };
+  Qualifying?: {
+    date: string;
+    time: string;
+  };
+  Sprint?: {
+    date: string;
+    time: string;
   };
 }

@@ -1,9 +1,11 @@
-import { Table, Badge, OverlayTrigger, Popover, ListGroup, ListGroupItem} from "react-bootstrap";
+import { Table, Badge, OverlayTrigger, Popover } from "react-bootstrap";
 import { IRace } from "../../models/interfaces";
 import { Link } from "react-router-dom";
+import RaceScheduleList from "../common/scheduleList";
 
 const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
   const date = new Date().toISOString().split("T")[0];
+
   return (
     <div>
       <Table hover striped responsive bordered>
@@ -15,7 +17,7 @@ const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
             <th>Date</th>
             <th>Time</th>
             <th>Status</th>
-            <th colSpan={3}>Actions</th>
+            <th colSpan={4}>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -42,17 +44,12 @@ const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
                   trigger="click"
                   placement="left"
                   overlay={
-                    <Popover id="popover-basic" >
-                      <Popover.Header>
-                        Race Schedule
-                      </Popover.Header>
+                    <Popover id="popover-basic">
+                      <Popover.Header>Race Schedule</Popover.Header>
                       <Popover.Body as="div">
-                       <ListGroup>
-                        <ListGroup.Item>Practice 1: {schedule.FirstPractice.date} {schedule.FirstPractice.time}</ListGroup.Item>
-                        <ListGroup.Item>Practice 2: {schedule.SecondPractice.date} {schedule.SecondPractice.time}</ListGroup.Item>
-                       </ListGroup>
-                        </Popover.Body>
-                      </Popover>
+                        {<RaceScheduleList schedule={schedule} />}
+                      </Popover.Body>
+                    </Popover>
                   }
                 >
                   <i className="fa-solid fa-clock"></i>
@@ -74,6 +71,15 @@ const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
                   style={{ color: "#000000" }}
                 >
                   <i className="fa-solid fa-info"></i>
+                </Link>
+              </td>
+              <td style={{ width: "20px", textAlign: "center" }}>
+                <Link
+                  title="See qualifying results"
+                  to={`/races/qualifying/${schedule.season}/${schedule.round}`}
+                  style={{ color: "#000000" }}
+                >
+                  <i className="fa-solid fa-flag-checkered"></i>
                 </Link>
               </td>
             </tr>
