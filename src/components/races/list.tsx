@@ -1,12 +1,14 @@
-import { Table, Badge } from "react-bootstrap";
+import { Table, Badge, OverlayTrigger, Popover } from "react-bootstrap";
 import { IRace } from "../../models/interfaces";
 import { Link } from "react-router-dom";
+import RaceScheduleList from "../common/scheduleList";
 
 const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
   const date = new Date().toISOString().split("T")[0];
+
   return (
     <div>
-      <Table>
+      <Table hover striped responsive bordered>
         <thead>
           <tr>
             <th>Round</th>
@@ -15,12 +17,12 @@ const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
             <th>Date</th>
             <th>Time</th>
             <th>Status</th>
-            <th>Results</th>
+            <th colSpan={4}>Actions</th>
           </tr>
         </thead>
         <tbody>
           {scheduleResults.map((schedule) => (
-            <tr>
+            <tr key={schedule.round}>
               <td>{schedule.round}</td>
               <td>{schedule.raceName}</td>
               <td>{schedule.Circuit.circuitName}</td>
@@ -35,9 +37,49 @@ const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
                   <Badge bg="warning">Pending</Badge>
                 </td>
               )}
-              <td>
-                <Link to={`/results/${schedule.season}/${schedule.round}`}>
-                  <i className="bi bi-card-checklist"></i>
+              <td style={{ width: "20px", textAlign: "center" }}>
+                <OverlayTrigger
+                  rootCloseEvent="click"
+                  rootClose={true}
+                  trigger="click"
+                  placement="left"
+                  overlay={
+                    <Popover id="popover-basic">
+                      <Popover.Header>Race Schedule</Popover.Header>
+                      <Popover.Body as="div">
+                        {<RaceScheduleList schedule={schedule} />}
+                      </Popover.Body>
+                    </Popover>
+                  }
+                >
+                  <i className="fa-solid fa-clock"></i>
+                </OverlayTrigger>
+              </td>
+              <td style={{ width: "20px", textAlign: "center" }}>
+                <Link
+                  title="See race results"
+                  to={`/results/${schedule.season}/${schedule.round}`}
+                  style={{ color: "#000000" }}
+                >
+                  <i className="fa-solid fa-table-list"></i>
+                </Link>
+              </td>
+              <td style={{ width: "20px", textAlign: "center" }}>
+                <Link
+                  title="See circuit detailed info"
+                  to={`/circuit/show/${schedule.Circuit.circuitId}`}
+                  style={{ color: "#000000" }}
+                >
+                  <i className="fa-solid fa-info"></i>
+                </Link>
+              </td>
+              <td style={{ width: "20px", textAlign: "center" }}>
+                <Link
+                  title="See qualifying results"
+                  to={`/races/qualifying/${schedule.season}/${schedule.round}`}
+                  style={{ color: "#000000" }}
+                >
+                  <i className="fa-solid fa-flag-checkered"></i>
                 </Link>
               </td>
             </tr>
