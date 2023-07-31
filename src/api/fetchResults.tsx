@@ -7,7 +7,7 @@ const fetchSearchResults: QueryFunction<
 > = async ({ queryKey }) => {
   const { season, round } = queryKey[1];
   const apiRes = await fetch(
-    `http://ergast.com/api/f1/${season}/${round}/results.json`
+    `https://ergast.com/api/f1/${season}/${round}/results.json`
   );
 
   if (!apiRes.ok) {
