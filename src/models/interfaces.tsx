@@ -64,6 +64,30 @@ export interface IResultLists {
   };
 }
 
+export interface IDriverStandings {
+  position: number;
+  positionText: string;
+  points: number;
+  wins: number;
+  Driver: IDriver;
+  Constructors: IConstructor[];
+}
+
+export interface IDriverStandingsLists {
+  MRData: {
+    StandingsTable: {
+      driverId: string;
+      season: string;
+      round: number;
+      StandingsLists: {
+        season: string;
+        round: number;
+        DriverStandings: IDriverStandings[];
+      }[];
+    };
+  };
+}
+
 export interface IQualifyingResult {
   number: number;
   position: number;

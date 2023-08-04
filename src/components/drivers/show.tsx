@@ -2,13 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import fetchDriver from "../../api/fetchDriver";
 import { Card, ListGroup } from "react-bootstrap";
+import DriverStandings from "./standings";
+import fetchDriverStandings from "../../api/fecthDriverStandings";
 
 const DriversShow = () => {
   const { driverId } = useParams();
   const result = useQuery(["driverId", driverId], fetchDriver);
   const driver = result.data;
-  console.log(driver);
-
+  const standings = useQuery(["id", driver?.driverId], fetchDriverStandings);
+  console.log(standings.data);
   return (
     <div>
       <Card style={{ width: "18rem" }}>
@@ -35,6 +37,7 @@ const DriversShow = () => {
           <Card.Link href={driver?.url}>More info</Card.Link>
         </Card.Body>
       </Card>
+      <DriverStandings driverStandings={standings.data!} />
     </div>
   );
 };

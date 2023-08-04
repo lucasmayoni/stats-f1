@@ -75,6 +75,7 @@ const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
               </td>
               <td style={{ width: "20px", textAlign: "center" }}>
                 <Link
+                  hidden={schedule.date >= date}
                   title="See qualifying results"
                   to={`/races/qualifying/${schedule.season}/${schedule.round}`}
                   style={{ color: "#000000" }}
