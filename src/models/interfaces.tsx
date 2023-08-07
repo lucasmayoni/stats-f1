@@ -77,10 +77,10 @@ export interface IDriverStandingsLists {
   MRData: {
     StandingsTable: {
       driverId: string;
-      season: string;
+      season: number;
       round: number;
       StandingsLists: {
-        season: string;
+        season: number;
         round: number;
         DriverStandings: IDriverStandings[];
       }[];

@@ -10,7 +10,9 @@ const DriversShow = () => {
   const result = useQuery(["driverId", driverId], fetchDriver);
   const driver = result.data;
   const standings = useQuery(["id", driver?.driverId], fetchDriverStandings);
-  console.log(standings.data);
+  standings.data?.MRData.StandingsTable.StandingsLists.sort(
+    (a, b) => b.season - a.season
+  );
   return (
     <div>
       <Card style={{ width: "18rem" }}>
