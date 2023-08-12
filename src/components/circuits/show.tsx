@@ -1,36 +1,68 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import fetchCircuit from "../../api/fetchCircuit";
-import { Card, ListGroup } from "react-bootstrap";
+import fetchCircuit from "../../api/circuits/fetchCircuit";
+import { Card, Col, ListGroup, Row } from "react-bootstrap";
+import fetchCircuitFastestsLaps from "../../api/circuits/fetchCircuitFastestsLaps";
+import CircuitFastLaps from "./circuitFastLaps";
+import CircuitMap from "./circuitMap";
 
 const CircuitShow = () => {
   const { circuitId } = useParams();
-  const circuitInfo = useQuery(["circuitId", circuitId], fetchCircuit);
+  const { data: circuitInfo } = useQuery(
+    ["circuitId", circuitId],
+    fetchCircuit
+  );
+
+  const { data: circuitFastestsLaps } = useQuery(
+    ["id", circuitInfo?.circuitId],
+    fetchCircuitFastestsLaps
+  );
   return (
     <div>
-      <Card style={{ width: "25rem" }}>
-        <Card.Body>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              <i className="fa-solid fa-arrow-right"></i> Circuit Name:&nbsp;
-              {circuitInfo?.data?.circuitName}
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <i className="fa-solid fa-arrow-right"></i> Location:&nbsp;
-              {circuitInfo?.data?.Location.locality}&nbsp;
-              {circuitInfo?.data?.Location.country}
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <i className="fa-solid fa-arrow-right"></i> Latitude:&nbsp;
-              {circuitInfo?.data?.Location.lat}
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <i className="fa-solid fa-arrow-right"></i> Longitude:&nbsp;
-              {circuitInfo?.data?.Location.long}
-            </ListGroup.Item>
-          </ListGroup>
-        </Card.Body>
-      </Card>
+      <Row>
+        <Col sm={6}>
+          <Card style={{ border: "0px none" }}>
+            <Card.Body>
+              <Card.Title>Circuit Information</Card.Title>
+              <ListGroup variant="flush">
+                <ListGroup.Item style={{ paddingLeft: "0px" }}>
+                  <i className="fa-solid fa-sign-hanging"></i> Circuit
+                  Name:&nbsp;
+                  {circuitInfo?.circuitName}
+                </ListGroup.Item>
+                <ListGroup.Item style={{ paddingLeft: "0px" }}>
+                  <i className="fa-solid fa-location-dot"></i> Location:&nbsp;
+                  {circuitInfo?.Location.locality}&nbsp;
+                  {circuitInfo?.Location.country}
+                </ListGroup.Item>
+                <ListGroup.Item style={{ paddingLeft: "0px" }}>
+                  <i className="fa-solid fa-map-location-dot"></i>{" "}
+                  Latitude:&nbsp;
+                  {circuitInfo?.Location.lat}
+                </ListGroup.Item>
+                <ListGroup.Item style={{ paddingLeft: "0px" }}>
+                  <i className="fa-solid fa-map-location-dot"></i>{" "}
+                  Longitude:&nbsp;
+                  {circuitInfo?.Location.long}
+                </ListGroup.Item>
+              </ListGroup>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col sm={6}>
+          <CircuitMap
+            latitude={circuitInfo?.Location.lat}
+            longitude={circuitInfo?.Location.long}
+            circuitName={circuitInfo?.circuitName}
+          />
+        </Col>
+      </Row>
+      <Row bordered>
+        <Col sm={6}>
+          <CircuitFastLaps data={circuitFastestsLaps!} />
+        </Col>
+        <Col sm={6}></Col>
+      </Row>
     </div>
   );
 };

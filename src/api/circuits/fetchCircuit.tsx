@@ -1,5 +1,5 @@
 import { QueryFunction } from "@tanstack/react-query";
-import { ICircuit } from "../models/interfaces";
+import { ICircuit } from "../../models/interfaces";
 
 const fetchCircuit: QueryFunction<ICircuit> = async ({ queryKey }) => {
   const circuitId = queryKey[1];

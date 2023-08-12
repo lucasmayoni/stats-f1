@@ -1,5 +1,5 @@
 import { QueryFunction } from "@tanstack/react-query";
-import { IDriverList } from "../models/interfaces";
+import { IDriverList } from "../../models/interfaces";
 
 const fetchDrivers: QueryFunction<IDriverList> = async ({ queryKey }) => {
   const year = queryKey[1];

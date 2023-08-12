@@ -1,4 +1,4 @@
-import fetchDrivers from "../../api/fetchDrivers";
+import fetchDrivers from "../../api/drivers/fetchDrivers";
 import { Button, Table } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
