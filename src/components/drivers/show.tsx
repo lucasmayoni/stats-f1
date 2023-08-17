@@ -9,7 +9,7 @@ const DriversShow = () => {
   const { driverId } = useParams();
   const result = useQuery(["driverId", driverId], fetchDriver);
   const driver = result.data;
-  const standings = useQuery(["id", driver?.driverId], fetchDriverStandings);
+  const standings = useQuery(["id", driverId], fetchDriverStandings);
   standings.data?.MRData.StandingsTable.StandingsLists.sort(
     (a, b) => b.season - a.season
   );
@@ -39,7 +39,11 @@ const DriversShow = () => {
           <Card.Link href={driver?.url}>More info</Card.Link>
         </Card.Body>
       </Card>
-      <DriverStandings driverStandings={standings.data!} />
+      {standings.data ? (
+        <DriverStandings driverStandings={standings.data} />
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 };

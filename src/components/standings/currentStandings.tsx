@@ -4,13 +4,15 @@ import fetchCurrentStandings from "../../api/standings/fetchCurrentStandings";
 import fetchConstructorStandings from "../../api/standings/fetchConstructorStandings";
 
 const CurrentStandings = () => {
-  const results = useQuery(["search"], fetchCurrentStandings);
+  const results = useQuery(["drivers"], fetchCurrentStandings);
   const driverStandings =
     results.data?.MRData.StandingsTable.StandingsLists[0].DriverStandings ?? [];
 
-  // const { data: res } = useQuery(["search"], fetchConstructorStandings);
-  // const constructorStandings =
-  //   res?.MRData.StandingsTable.StandingLists[0].ConstructorStandings ?? [];
+  const results2 = useQuery(["constructors"], fetchConstructorStandings);
+  const constructorStandings =
+    results2.data?.MRData?.StandingsTable.StandingsLists[0]
+      .ConstructorStandings ?? [];
+
   return (
     <div>
       <Row>
@@ -44,7 +46,7 @@ const CurrentStandings = () => {
           </Table>
         </Col>
         <Col sm={6}>
-          {/* <Table striped hover bordered>
+          <Table striped hover bordered>
             <thead>
               <tr>
                 <th colSpan={4}>Current Season Constructor Standings</th>
@@ -58,7 +60,7 @@ const CurrentStandings = () => {
             </thead>
             <tbody>
               {constructorStandings.map((constructorInfo: any) => (
-                <tr key={constructorInfo.Constructors.constructorId}>
+                <tr>
                   <td>{constructorInfo.position}</td>
                   <td>{constructorInfo.Constructor.name}</td>
                   <td>{constructorInfo.points}</td>
@@ -66,7 +68,7 @@ const CurrentStandings = () => {
                 </tr>
               ))}
             </tbody>
-          </Table> */}
+          </Table>
         </Col>
       </Row>
     </div>
