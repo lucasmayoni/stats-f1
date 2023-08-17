@@ -1,5 +1,5 @@
 import { QueryFunction } from "@tanstack/react-query";
-import { IDriver } from "../models/interfaces";
+import { IDriver } from "../../models/interfaces";
 
 const fetchDriver: QueryFunction<IDriver> = async ({ queryKey }) => {
   const code = queryKey[1];

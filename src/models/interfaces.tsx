@@ -1,3 +1,19 @@
+export interface ICircuitDriverStandings {
+  MRData: {
+    total: number;
+    StandingsTable: {
+      driverId: string;
+      StandingList: [
+        {
+          season: number;
+          round: number;
+          DriverStandings: IDriverStandings[];
+        }
+      ];
+    };
+  };
+}
+
 export interface ICircuit {
   circuitId: string;
   url: string;
@@ -17,6 +33,41 @@ export interface IConstructor {
   nationality: string;
 }
 
+export interface ILap {
+  rank: string;
+  lap: number;
+  Time: {
+    time: string;
+  };
+  AverageSpeed: {
+    units: string;
+    speed: number;
+  };
+}
+
+export interface IConstructorStanding {
+  position: number;
+  positionText: string;
+  points: number;
+  wins: number;
+  Constructor: IConstructor;
+}
+
+export interface IConstructorStandingLists {
+  MRData: {
+    StandingsTable: {
+      season: number;
+      StandingLists: [
+        {
+          season: number;
+          round: number;
+          ConstructorStandings: IConstructorStanding[];
+        }
+      ];
+    };
+  };
+}
+
 export interface IResult {
   number: string;
   position: string;
@@ -32,6 +83,15 @@ export interface IResult {
     dateOfBirth: string;
     nationality: string;
   };
+  Constructor?: IConstructor;
+  grid?: string;
+  laps?: string;
+  status?: string;
+  Time?: {
+    millis: number;
+    time: string;
+  };
+  FastestLap?: ILap;
 }
 export interface IResultLists {
   MRData: {
@@ -40,8 +100,8 @@ export interface IResultLists {
       round: string;
       Races: [
         {
-          season: string;
-          round: string;
+          season: number;
+          round: number;
           url: string;
           raceName: string;
           Circuit: {
@@ -49,8 +109,8 @@ export interface IResultLists {
             url: string;
             circuitName: string;
             Location: {
-              lat: string;
-              long: string;
+              lat: number;
+              long: number;
               locality: string;
               country: string;
             };
@@ -94,8 +154,8 @@ export interface IQualifyingResult {
   Driver: IDriver;
   Constructor: IConstructor;
   Q1: string;
-  Q2: string;
-  Q3: string;
+  Q2?: string;
+  Q3?: string;
 }
 
 export interface IQualifyingResultLists {
@@ -145,32 +205,6 @@ export interface IDriverList {
   MRData: {
     DriverTable: {
       Drivers: IDriver[];
-    };
-  };
-}
-
-export interface IDriverStandings {
-  MRData: {
-    StandingsTable: {
-      StandingsLists: {
-        season: string;
-        round: string;
-        DriverStandings: {
-          position: string;
-          positionText: string;
-          points: string;
-          wins: string;
-          Driver: {
-            driverId: string;
-            permanentNumber: string;
-            code: string;
-            url: string;
-            givenName: string;
-            familyName: string;
-            dateOfBirth: string;
-          };
-        };
-      }[];
     };
   };
 }

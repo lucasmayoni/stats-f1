@@ -2,6 +2,7 @@ import { Table, Badge, OverlayTrigger, Popover } from "react-bootstrap";
 import { IRace } from "../../models/interfaces";
 import { Link } from "react-router-dom";
 import RaceScheduleList from "../common/scheduleList";
+import { convertDate, convertTimeZone } from "../../utils/DateConverter";
 
 const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
   const date = new Date().toISOString().split("T")[0];
@@ -26,8 +27,18 @@ const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
               <td>{schedule.round}</td>
               <td>{schedule.raceName}</td>
               <td>{schedule.Circuit.circuitName}</td>
-              <td>{schedule.date}</td>
-              <td>{schedule.time}</td>
+              <td>
+                {convertDate(schedule.date).toLocaleString("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  weekday: "long",
+                })}
+              </td>
+              <td>
+                {convertTimeZone(schedule.time)[0] +
+                  ":" +
+                  convertTimeZone(schedule.time)[1]}
+              </td>
               {schedule.date < date ? (
                 <td>
                   <Badge bg="success">Finished</Badge>

@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import fetchDriver from "../../api/fetchDriver";
+import fetchDriver from "../../api/drivers/fetchDriver";
 import { Card, ListGroup } from "react-bootstrap";
 import DriverStandings from "./standings";
-import fetchDriverStandings from "../../api/fecthDriverStandings";
+import fetchDriverStandings from "../../api/drivers/fecthDriverStandings";
 
 const DriversShow = () => {
   const { driverId } = useParams();
