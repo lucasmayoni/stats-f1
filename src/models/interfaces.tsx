@@ -45,6 +45,29 @@ export interface ILap {
   };
 }
 
+export interface IConstructorStanding {
+  position: number;
+  positionText: string;
+  points: number;
+  wins: number;
+  Constructor: IConstructor;
+}
+
+export interface IConstructorStandingLists {
+  MRData: {
+    StandingsTable: {
+      season: number;
+      StandingLists: [
+        {
+          season: number;
+          round: number;
+          ConstructorStandings: IConstructorStanding[];
+        }
+      ];
+    };
+  };
+}
+
 export interface IResult {
   number: string;
   position: string;

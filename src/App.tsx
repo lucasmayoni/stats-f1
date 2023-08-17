@@ -9,6 +9,7 @@ import ResultList from "./components/results/list";
 import Header from "./components/common/header";
 import CircuitShow from "./components/circuits/show";
 import Qualifying from "./components/races/qualifying";
+import CurrentStandings from "./components/standings/currentStandings";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,6 +47,7 @@ function App() {
                   path="/races/qualifying/:season/:round"
                   element={<Qualifying />}
                 />
+                <Route path="/standings/" element={<CurrentStandings />} />
               </Routes>
             </Col>
           </Row>

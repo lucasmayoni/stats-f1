@@ -8,7 +8,6 @@ const fetchCircuitFastestsLaps: QueryFunction<IResultLists> = async ({
   const apiRes = await fetch(
     `https://ergast.com/api/f1/circuits/${id}/fastest/1/results.json`
   );
-  console.log("APIRES", apiRes);
   if (!apiRes.ok) {
     throw new Error("Circuit fetch not ok");
   }
