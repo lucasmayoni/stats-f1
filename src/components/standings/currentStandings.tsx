@@ -60,7 +60,7 @@ const CurrentStandings = () => {
             </thead>
             <tbody>
               {constructorStandings.map((constructorInfo: any) => (
-                <tr>
+                <tr key={constructorInfo.constructorId}>
                   <td>{constructorInfo.position}</td>
                   <td>{constructorInfo.Constructor.name}</td>
                   <td>{constructorInfo.points}</td>

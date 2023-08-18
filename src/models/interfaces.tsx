@@ -33,6 +33,14 @@ export interface IConstructor {
   nationality: string;
 }
 
+export interface IConstructorList {
+  MRData: {
+    ConstructorTable: {
+      Constructors: IConstructor[];
+    };
+  };
+}
+
 export interface ILap {
   rank: string;
   lap: number;
