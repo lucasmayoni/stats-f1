@@ -1,3 +1,14 @@
+export interface ISeason {
+  season: number;
+  url: string;
+}
+
+export interface IStatus {
+  statusId: number;
+  count?: number;
+  status: string;
+}
+
 export interface ICircuitDriverStandings {
   MRData: {
     total: number;
@@ -76,25 +87,27 @@ export interface IConstructorStandingLists {
   };
 }
 
+export interface IDriver {
+  driverId: string;
+  permanentNumber: number;
+  code: string;
+  url: string;
+  givenName: string;
+  familyName: string;
+  dateOfBirth: string;
+  nationality: string;
+}
+
 export interface IResult {
   number: string;
-  position: string;
+  position: number;
   positionText: string;
   points: string;
-  Driver: {
-    driverId: string;
-    permanentNumber: string;
-    code: string;
-    url: string;
-    givenName: string;
-    familyName: string;
-    dateOfBirth: string;
-    nationality: string;
-  };
+  Driver: IDriver;
   Constructor?: IConstructor;
-  grid?: string;
+  grid?: number;
   laps?: string;
-  status?: string;
+  status: string;
   Time?: {
     millis: number;
     time: string;
@@ -104,7 +117,7 @@ export interface IResult {
 export interface IResultLists {
   MRData: {
     RaceTable: {
-      season: string;
+      season: number;
       round: string;
       Races: [
         {
@@ -112,17 +125,7 @@ export interface IResultLists {
           round: number;
           url: string;
           raceName: string;
-          Circuit: {
-            circuitId: string;
-            url: string;
-            circuitName: string;
-            Location: {
-              lat: number;
-              long: number;
-              locality: string;
-              country: string;
-            };
-          };
+          Circuit: ICircuit;
           date: string;
           time: string;
           Results: IResult[];
@@ -169,11 +172,11 @@ export interface IQualifyingResult {
 export interface IQualifyingResultLists {
   MRData: {
     RaceTable: {
-      season: string;
+      season: number;
       round: string;
       Races: [
         {
-          season: string;
+          season: number;
           round: string;
           url: string;
           raceName: string;
@@ -190,23 +193,9 @@ export interface IQualifyingResultLists {
 export interface ISeasons {
   MRData: {
     SeasonTable: {
-      Seasons: {
-        season: number;
-        url: string;
-      }[];
+      Seasons: ISeason[];
     };
   };
-}
-
-export interface IDriver {
-  driverId: string;
-  permanentNumber: number;
-  code: string;
-  url: string;
-  givenName: string;
-  familyName: string;
-  dateOfBirth: string;
-  nationality: string;
 }
 
 export interface IDriverList {
@@ -218,7 +207,7 @@ export interface IDriverList {
 }
 
 export interface IRace {
-  season: string;
+  season: number;
   round: number;
   url: string;
   raceName: string;
@@ -250,7 +239,7 @@ export interface IRace {
 export interface IRaceLists {
   MRData: {
     RaceTable: {
-      season: string;
+      season: number;
       Races: IRace[];
     };
   };
