@@ -1,0 +1,10 @@
+.tableColumnHeader-sm {
+    width: 10px;
+  }
+.tableColumnHeader-md {
+    width: 20px
+  }
+.tableColumnHeader-md,  .centered{
+    width: 20px;
+    text-align: center;
+}

@@ -1,10 +1,10 @@
-export const convertDate = (dateString) => {
+export const convertDate = (dateString: string) => {
     const [year, month, day] = dateString.split('-');
 
     return new Date(+year, +month - 1, +day);
 };
 
-export const convertTimeZone = (timeString) => {
+export const convertTimeZone = (timeString: string) => {
     if (!timeString) {
         return ['', ''];
     }
@@ -17,7 +17,7 @@ export const convertTimeZone = (timeString) => {
     if ((+hours + timeZone) % 24 < 10) {
         hours = '0' + (+hours + timeZone) % 24;
     } else {
-        hours = +hours + timeZone;
+        hours = +hours + timeZone+'';
     }
 
     return [hours, minutes];

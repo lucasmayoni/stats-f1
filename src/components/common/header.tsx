@@ -3,8 +3,12 @@ import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import fetchSeasons from "../../api/fetchSeasons";
 
 const Header = () => {
-  const result = useQuery([], fetchSeasons);
-  const seasons = result.data?.MRData.SeasonTable.Seasons ?? [];
+  const { data: res, isLoading } = useQuery([], fetchSeasons);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const seasons = res?.MRData.SeasonTable.Seasons ?? [];
   const sortedSeasons = seasons.sort((a, b) => b.season - a.season);
 
   return (
