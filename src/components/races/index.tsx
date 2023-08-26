@@ -31,7 +31,7 @@ const Schedules = () => {
             <Form.Label visuallyHidden>Year</Form.Label>
             <Form.Select name="season" className="mb-3">
               {sortedSeasons.map((season) => (
-                <option>{season.season}</option>
+                <option key={season.season}>{season.season}</option>
               ))}
             </Form.Select>
           </Col>

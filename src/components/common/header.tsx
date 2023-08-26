@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import fetchSeasons from "../../api/fetchSeasons";
+import { useContext } from "react";
+import { useSeason } from "./seasonContext";
 
 const Header = () => {
-  const { data: res, isLoading } = useQuery([], fetchSeasons);
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // const { data: res, isLoading } = useQuery([], fetchSeasons);
+  // if (isLoading) {
+  //   return <div>Loading...</div>;g
+  // }
 
-  const seasons = res?.MRData.SeasonTable.Seasons ?? [];
-  const sortedSeasons = seasons.sort((a, b) => b.season - a.season);
+  const seasons = useSeason()?.MRData.SeasonTable.Seasons ?? [];
 
   return (
     <Navbar bg="dark" expand="lg" data-bs-theme="dark">
@@ -20,8 +21,11 @@ const Header = () => {
           <Nav className="me-auto">
             <Nav.Link href={"/races/"}>Races</Nav.Link>
             <NavDropdown title="Drivers" id="basic-nav-dropdown">
-              {sortedSeasons.map((season) => (
-                <NavDropdown.Item href={`/drivers/${season.season}`}>
+              {seasons.map((season) => (
+                <NavDropdown.Item
+                  key={season.season}
+                  href={`/drivers/${season.season}`}
+                >
                   {season.season}
                 </NavDropdown.Item>
               ))}
