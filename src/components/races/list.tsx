@@ -1,7 +1,7 @@
 import { Table, Badge, OverlayTrigger, Popover } from "react-bootstrap";
 import { IRace } from "../../models/interfaces";
 import { Link } from "react-router-dom";
-import RaceScheduleList from "../common/scheduleList";
+import RaceScheduleDetail from "../common/scheduleDetail";
 import { convertDate, convertTimeZone } from "../../utils/DateConverter";
 
 const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
@@ -58,7 +58,7 @@ const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
                     <Popover id="popover-basic">
                       <Popover.Header>Race Schedule</Popover.Header>
                       <Popover.Body as="div">
-                        {<RaceScheduleList schedule={schedule} />}
+                        {<RaceScheduleDetail schedule={schedule} />}
                       </Popover.Body>
                     </Popover>
                   }
