@@ -1,8 +1,9 @@
 import { QueryFunction } from "@tanstack/react-query";
-import { IConstructorList } from "../../models/interfaces";
+import { IConstructorList, IDriver, IDriverList } from "../../models/interfaces";
+import axios from "axios";
 
-const fetchConstructors: QueryFunction<IConstructorList,  ["search", { season: string }]> = async ({queryKey}) => {
-  const {season} = queryKey[1];
+export const fetchConstructors: QueryFunction<IConstructorList, ["search", { season: string }]> = async ({ queryKey }) => {
+  const { season } = queryKey[1];
   const apiRes = await fetch(
     `https://ergast.com/api/f1/${season}/constructors.json`
   );
@@ -11,4 +12,15 @@ const fetchConstructors: QueryFunction<IConstructorList,  ["search", { season: s
   }
   return apiRes.json();
 };
-export default fetchConstructors;
+
+export const constructorWithDrivers = async (season: string, team: string): Promise<IDriverList> => {
+  const api = axios.create({
+    baseURL: 'https://ergast.com/api/f1'
+  });
+  try {
+    const response = await api.get(`/${season}/constructors/${team}/drivers.json`)
+    return response.data as IDriverList;
+  } catch (error) {
+    throw error;
+  }
+}
