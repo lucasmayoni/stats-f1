@@ -14,7 +14,8 @@ const ConstructorList = () => {
   const searchResult = useQuery(["search", request], fetchConstructors, {
     enabled: request.season !== "",
   });
-  const constructors = searchResult.data?.MRData.ConstructorTable.Constructors ?? [];
+  const constructors =
+    searchResult.data?.MRData.ConstructorTable.Constructors ?? [];
   return (
     <div>
       <Row>
@@ -44,13 +45,15 @@ const ConstructorList = () => {
                 </Button>
               </Col>
             </Row>
-
           </Form>
         </Col>
       </Row>
       <Row>
         <Col>
-          <ConstructorDetails constructorList={constructors} season={request.season} />
+          <ConstructorDetails
+            constructorList={constructors}
+            season={request.season}
+          />
         </Col>
       </Row>
     </div>
