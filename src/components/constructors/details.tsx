@@ -15,8 +15,8 @@ const ConstructorDetails = ({ constructorList, season }: { constructorList: ICon
                 <Card.Text>
                   {constructor.nationality}
                 </Card.Text>
-                <DriversDetail season={season} constructorId={constructor.constructorId} />
               </Card.Body>
+              <DriversDetail season={season} constructorId={constructor.constructorId} />
               <Card.Footer>
                 <Button variant="primary">More Info</Button>
               </Card.Footer>

@@ -1,7 +1,8 @@
-import { Card, ListGroup } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
 import { constructorWithDrivers } from "../../api/constructors/fetchConstructors";
-import { IDriver, IDriverList } from "../../models/interfaces";
+import { IDriverList } from "../../models/interfaces";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const DriversDetail = ({ season, constructorId }: { season: string, constructorId: string }) => {
     const [data, setData] = useState<IDriverList>();
@@ -12,6 +13,7 @@ const DriversDetail = ({ season, constructorId }: { season: string, constructorI
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
+
     }, []);
     if (!data) {
         return <div>Loading...</div>;
@@ -21,7 +23,8 @@ const DriversDetail = ({ season, constructorId }: { season: string, constructorI
         <ListGroup variant="flush">
             {
                 data.MRData?.DriverTable?.Drivers.map((driver, idx) => (
-                    <ListGroup.Item key={idx}>{driver.givenName} {driver.familyName}</ListGroup.Item>
+                    <ListGroup.Item key={idx}>
+                        <Link style={{ color: 'black' }} to={`/drivers/show/${driver.driverId}`}>({driver.permanentNumber}) {driver.givenName} {driver.familyName}</Link></ListGroup.Item>
                 ))
             }
         </ListGroup>
