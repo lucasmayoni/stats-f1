@@ -2,11 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DriversList from "./components/drivers/list";
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DriversShow from "./components/drivers/show";
 import Schedules from "./components/races";
 import ResultList from "./components/results/list";
