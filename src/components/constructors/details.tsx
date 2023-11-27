@@ -1,38 +1,30 @@
-import { Button, Table } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import { IConstructor } from "../../models/interfaces";
+import DriversDetail from "./drivers";
 
-const ConstructorDetails = ({constructorList}: {constructorList: IConstructor[]}) => {
-    return (
-        <Table hover striped bordered>
-        <thead>
-          <tr>
-            <th>Constructors</th>
-          </tr>
-          <tr>
-            <th>Name</th>
-            <th>Nationality</th>
-            <th>Info</th>
-          </tr>
-        </thead>
-        <tbody>
-          {constructorList.map((constructor) => (
-            <tr key={constructor.constructorId}>
-              <td>{constructor.name}</td>
-              <td>{constructor.nationality}</td>
-              <td>
-                <Button
-                  size="sm"
-                  variant="primary"
-                  href={constructor.url}
-                  target="blank"
-                >
-                  INFO
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    )
+const ConstructorDetails = ({ constructorList, season }: { constructorList: IConstructor[], season: string }) => {
+  return (
+    <Row xs={1} md={5} className="g-4">
+      {
+        constructorList.map((constructor, idx) => (
+          <Col key={idx}>
+            <Card style={{ width: '18rem', display: 'flex', alignItems: 'stretch' }}>
+              <Card.Img variant="top" src={`../assets/${constructor.constructorId}.png`} />
+              <Card.Body>
+                <Card.Title>{constructor.name}</Card.Title>
+                <Card.Text>
+                  {constructor.nationality}
+                </Card.Text>
+              </Card.Body>
+              <DriversDetail season={season} constructorId={constructor.constructorId} />
+              <Card.Footer>
+                <Button variant="primary">More Info</Button>
+              </Card.Footer>
+            </Card>
+          </Col>
+        ))
+      }
+    </Row >
+  )
 }
 export default ConstructorDetails;
