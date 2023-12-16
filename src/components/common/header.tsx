@@ -1,14 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
-import fetchSeasons from "../../api/fetchSeasons";
-import { useContext } from "react";
 import { useSeason } from "./seasonContext";
 
 const Header = () => {
-  // const { data: res, isLoading } = useQuery([], fetchSeasons);
-  // if (isLoading) {
-  //   return <div>Loading...</div>;g
-  // }
 
   const seasons = useSeason()?.MRData.SeasonTable.Seasons ?? [];
 

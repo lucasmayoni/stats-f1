@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { Button, Col, Form, Row, Table } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { fetchConstructors } from "../../api/constructors/fetchConstructors";
 import fetchSeasons from "../../api/fetchSeasons";
 import ConstructorDetails from "./details";

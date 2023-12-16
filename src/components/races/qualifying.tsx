@@ -37,7 +37,7 @@ const Qualifying = () => {
         </thead>
         <tbody>
           {qualyResults.map((result) => (
-            <tr>
+            <tr key={result.Driver.driverId}>
               <td>{result.Driver.permanentNumber}</td>
               <td>
                 {result.Driver.givenName} {result.Driver.familyName}

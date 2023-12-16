@@ -104,7 +104,7 @@ const ResultList = () => {
         </thead>
         <tbody>
           {raceResults.map((result) => (
-            <tr>
+            <tr key={result.Driver.driverId}>
               <td style={{ textAlign: "center" }}>
                 <GridVariation position={result.position} grid={result.grid} />
               </td>

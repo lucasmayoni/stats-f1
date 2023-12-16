@@ -1,5 +1,5 @@
 import { QueryFunction } from "@tanstack/react-query";
-import { IDriver, IDriverStandingsLists } from "../../models/interfaces";
+import { IDriverStandingsLists } from "../../models/interfaces";
 
 const fetchDriverStandings: QueryFunction<IDriverStandingsLists> = async ({
   queryKey,
