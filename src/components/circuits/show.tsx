@@ -1,12 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import fetchCircuit from "../../api/circuits/fetchCircuit";
-import { Card, Col, ListGroup, Row } from "react-bootstrap";
+import { Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import fetchCircuitFastestsLaps from "../../api/circuits/fetchCircuitFastestsLaps";
 import CircuitFastLaps from "./circuitFastLaps";
 import CircuitMap from "./circuitMap";
+import { useEffect, useState } from "react";
+import { getCircuits } from "../../api/sportsapi/circuitsAPIClient";
+import '../../styles/card.css';
+import '../../styles/table.css';
 
 const CircuitShow = () => {
+
+  const [circuitDetInfo, setCircuitDetInfo] = useState([]);
+
   const { circuitId } = useParams();
   const { data: circuitInfo } = useQuery(
     ["circuitId", circuitId],
@@ -17,13 +24,28 @@ const CircuitShow = () => {
     ["id", circuitInfo?.circuitId],
     fetchCircuitFastestsLaps
   );
+  useEffect(() => {
+      const fetchCircuitData = async () => {
+        try {
+            const response = await getCircuits(circuitId?.toString().toLowerCase().replace("_", " ")); 
+            const circuitImage = response.response[0].image;
+            setCircuitDetInfo(circuitImage);      
+        } catch (error) {
+          console.error('Error fetching Circuit Info');
+        }
+      }
+      fetchCircuitData();
+  },[]);
   return (
     <div>
       <Row>
         <Col sm={6}>
-          <Card style={{ border: "0px none" }}>
+          <Card className="card-custom">
+          <Card.Header className="card-custom-header">
+              Circuit Information
+              </Card.Header>
             <Card.Body>
-              <Card.Title>Circuit Information</Card.Title>
+              
               <ListGroup variant="flush">
                 <ListGroup.Item style={{ paddingLeft: "0px" }}>
                   <i className="fa-solid fa-sign-hanging"></i> Circuit
@@ -44,6 +66,9 @@ const CircuitShow = () => {
                   <i className="fa-solid fa-map-location-dot"></i>{" "}
                   Longitude:&nbsp;
                   {circuitInfo?.Location.long}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Image width="300" src={circuitDetInfo.toString()} />
                 </ListGroup.Item>
               </ListGroup>
             </Card.Body>

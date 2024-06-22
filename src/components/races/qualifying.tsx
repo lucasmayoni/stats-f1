@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import fetchRaceQualifyingResults from "../../api/fetchRaceQualifyingResults";
 import { Table } from "react-bootstrap";
+import '../../styles/table.css';
 
 const Qualifying = () => {
   const { season, round } = useParams();
@@ -17,7 +18,7 @@ const Qualifying = () => {
     searchResult.data?.MRData.RaceTable.Races[0].QualifyingResults ?? [];
   return (
     <div>
-      <Table striped bordered hover>
+      <Table bordered hover className="table-custom">
         <thead>
           <tr>
             <th colSpan={6}>
