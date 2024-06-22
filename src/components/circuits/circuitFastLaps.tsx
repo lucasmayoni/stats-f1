@@ -1,12 +1,14 @@
 import { Table } from "react-bootstrap";
 import { IResultLists } from "../../models/interfaces";
+import '../../styles/table.css'
+
 
 const CircuitFastLaps = ({ data }: { data: IResultLists }) => {
   const results = data?.MRData?.RaceTable?.Races ?? [];
   results.sort((a, b) => b.season - a.season);
   return (
     <div>
-      <Table striped hover bordered>
+      <Table hover bordered className="table-custom">
         <thead>
           <tr>
             <th colSpan={3}>Fastests Laps</th>

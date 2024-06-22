@@ -2,13 +2,15 @@ import fetchDrivers from "../../api/drivers/fetchDrivers";
 import { Button, Table } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
+import { convertFlagSuffix} from '../../utils/DateConverter';
+import '../../styles/table.css';
 
 const DriversList = () => {
   const { year } = useParams();
   const result = useQuery(["year", year], fetchDrivers);
   const drivers = result?.data?.MRData?.DriverTable?.Drivers ?? [];
   return (
-    <Table striped bordered hover>
+    <Table bordered hover className="table-custom">
       <thead>
         <tr>
           <th colSpan={5}>Drivers List for season {year}</th>
@@ -29,14 +31,16 @@ const DriversList = () => {
             <td>
               {driver.givenName} {driver.familyName}
             </td>
-            <td>{driver.nationality}</td>
+            <td><img src={`https://flagsapi.com/${convertFlagSuffix(driver.nationality.toString())}/flat/32.png`}></img> &nbsp;&nbsp;{driver.nationality}</td>
             <td>
+              
               <Button
+                style={{color: "#555"}}
                 size="sm"
-                variant="primary"
+                variant="link"
                 href={`/drivers/show/${driver.driverId}`}
               >
-                INFO
+                <i className="fa fa-info-circle"></i>&nbsp;INFO
               </Button>
             </td>
           </tr>

@@ -22,3 +22,63 @@ export const convertTimeZone = (timeString: string) => {
 
   return [hours, minutes];
 };
+
+export const convertFlagSuffix = (nationality: string) => {
+  switch(nationality){ 
+    case "Bahrain": return "BH";
+    case "British": 
+    case "UK": return "GB";
+    case "UAE": return "AE";
+    case "Argentina": return "AR";
+    case "Australian":
+    case "Australia": return "AU";
+    case "Austria": return "AT";
+    case "Azerbaijan": return "AZ";
+    case "Belgium": return "BE";
+    case "Brazil": return "BR";
+    case "American":
+    case "USA": return "US";
+    case "Canada":
+    case "Canadian": return "CA"
+    case "Chinese": 
+    case "China": return "CN";
+    case "Netherlands": return "NL";
+    case "Danish":
+    case "Denmark": return "DK"
+    case "Dutch": return "NL";
+    case "German":
+    case "Germany": return "DE";
+    case "Italy": return "IT";
+    case "Spanish":
+    case "Spain": return "ES";
+    case "French":
+    case "France": return "FR";
+    case "Finland":
+    case "Finnish": return "FI";
+    case "Hungary": return "HU";
+    case "India": return "IN";
+    case "Japan": 
+    case "Japanese": return "JP";
+    case "Korea": return "KR";
+    case "Malaysia": return "MY";
+    case "Mexican":
+    case "Mexico": return "MX";
+    case "Monegasque":
+    case "Monaco": return "MC";
+    case "Morocco": return "MA";
+    case "New Zealand":
+    case "New Zealander": return "NZ";
+    case "Portugal": return "PT";
+    case "Qatar": return "QA";
+    case "Russia": return "RU";
+    case "Saudi Arabia": return "SA";
+    case "Singapore": return "SG";
+    case "South Africa": return "ZA";
+    case "Sweden": return "SE";
+    case "Switzerland": return "CH";
+    case "Turkey": return "TR";
+    case "Thailand":
+    case "Thai": return "TH";
+  }
+   
+}

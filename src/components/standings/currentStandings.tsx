@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Col, Row, Table } from "react-bootstrap";
 import fetchCurrentStandings from "../../api/standings/fetchCurrentStandings";
 import fetchConstructorStandings from "../../api/standings/fetchConstructorStandings";
-
+import '../../styles/table.css';
 const CurrentStandings = () => {
   const results = useQuery(["drivers"], fetchCurrentStandings);
   const driverStandings =
@@ -17,7 +17,7 @@ const CurrentStandings = () => {
     <div>
       <Row>
         <Col sm={6}>
-          <Table striped hover bordered>
+          <Table className="table-custom" hover bordered>
             <thead>
               <tr>
                 <th colSpan={5}>Current Season Driver Standings</th>
@@ -46,7 +46,7 @@ const CurrentStandings = () => {
           </Table>
         </Col>
         <Col sm={6}>
-          <Table striped hover bordered>
+          <Table className="table-custom" hover bordered>
             <thead>
               <tr>
                 <th colSpan={4}>Current Season Constructor Standings</th>

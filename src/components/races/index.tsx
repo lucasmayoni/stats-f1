@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import fetchSeasons from "../../api/fetchSeasons";
 import { useState } from "react";
 import fetchRaces from "../../api/fetchRaces";
+import '../../styles/combo.css';
 
 const Schedules = () => {
   const result = useQuery([], fetchSeasons);
@@ -29,14 +30,14 @@ const Schedules = () => {
         <Row className="align-items-center">
           <Col xs="2">
             <Form.Label visuallyHidden>Year</Form.Label>
-            <Form.Select name="season" className="mb-3">
+            <Form.Select name="season" className="combo-select">
               {sortedSeasons.map((season) => (
                 <option key={season.season}>{season.season}</option>
               ))}
             </Form.Select>
           </Col>
           <Col xs="2">
-            <Button variant="primary" type="submit" className="mb-3">
+            <Button variant="primary" type="submit" className="combo-select-button">
               Buscar
             </Button>
           </Col>

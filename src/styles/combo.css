@@ -1,0 +1,21 @@
+.combo-select-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  .combo-select {
+    flex: 1;
+  }
+  
+  .combo-select .form-select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .combo-select-button {
+    margin-left: 10px;
+  }

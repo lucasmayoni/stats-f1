@@ -4,6 +4,7 @@ import { Button, Col, Form, Row, Table } from "react-bootstrap";
 import { fetchConstructors } from "../../api/constructors/fetchConstructors";
 import fetchSeasons from "../../api/fetchSeasons";
 import ConstructorDetails from "./details";
+import '../../styles/table.css'
 
 const ConstructorList = () => {
   const result_seasons = useQuery([], fetchSeasons);
