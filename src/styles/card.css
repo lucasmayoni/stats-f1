@@ -1,0 +1,73 @@
+/* Card Styles */
+.card-custom {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s;
+  }
+  
+  .card-custom:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-custom-header {
+    background-color: #343a40;
+    color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    font-size: 1.25rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+  }
+  
+  .card-custom-body {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .card-custom-title {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  
+  .card-custom-text {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  .card-custom-img {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+  }
+  .card-custom-img-constructor {
+    max-width: 260px;
+    max-height: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    min-height: 120px;
+  }
+  .card-custom-footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+  }
+  
+  .card-custom-footer a {
+    color: #555;
+    text-decoration: none;
+  }
+  
+  .card-custom-footer a:hover {
+    text-decoration: underline;
+  }

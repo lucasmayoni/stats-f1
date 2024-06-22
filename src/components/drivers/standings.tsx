@@ -1,14 +1,13 @@
 import { Table } from "react-bootstrap";
 import { IDriverStandingsLists } from "../../models/interfaces";
-
+import '../../styles/table.css';
 const DriverStandings = ({
   driverStandings,
 }: {
   driverStandings: IDriverStandingsLists;
 }) => {
   return (
-    <div style={{ marginTop: "2rem" }}>
-      <Table bordered striped hover>
+      <Table bordered hover className="table-custom">
         <thead>
           <tr>
             <th colSpan={5}>Driver Standings</th>
@@ -41,8 +40,6 @@ const DriverStandings = ({
           )}
         </tbody>
       </Table>
-      <ul></ul>
-    </div>
   );
 };
 export default DriverStandings;

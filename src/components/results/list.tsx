@@ -4,6 +4,7 @@ import fetchSearchResults from "../../api/fetchResults";
 import { useQuery } from "@tanstack/react-query";
 import RaceStatus from "../common/raceStatus";
 import "./list.css";
+import "../../styles/table.css";
 
 const ResultList = () => {
   const { season, round } = useParams();
@@ -82,12 +83,11 @@ const ResultList = () => {
   };
   return (
     <div>
-      <h1>Results</h1>
-      <Table hover striped bordered>
+        <Table hover bordered className="table-custom">
         <thead>
           <tr>
             <th colSpan={9}>
-              {raceInfo?.raceName} - {raceInfo?.Circuit.circuitName}
+              Results from: {raceInfo?.raceName} - {raceInfo?.Circuit.circuitName}
             </th>
           </tr>
           <tr>

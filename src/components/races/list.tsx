@@ -3,13 +3,13 @@ import { IRace } from "../../models/interfaces";
 import { Link } from "react-router-dom";
 import RaceScheduleDetail from "../common/scheduleDetail";
 import { convertDate, convertTimeZone } from "../../utils/DateConverter";
-
+import '../../styles/table.css'
 const RacesList = ({ scheduleResults }: { scheduleResults: IRace[] }) => {
   const date = new Date().toISOString().split("T")[0];
 
   return (
     <div>
-      <Table hover striped responsive bordered>
+      <Table hover responsive bordered className="table-custom">
         <thead>
           <tr>
             <th>Round</th>
