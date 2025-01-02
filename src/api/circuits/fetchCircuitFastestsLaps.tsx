@@ -6,7 +6,7 @@ const fetchCircuitFastestsLaps: QueryFunction<IResultLists> = async ({
 }) => {
   const id = queryKey[1];
   const apiRes = await fetch(
-    `https://ergast.com/api/f1/circuits/${id}/fastest/1/results.json`
+    `https://api.jolpi.ca/ergast/f1/circuits/${id}/fastest/1/results.json`
   );
   if (!apiRes.ok) {
     throw new Error("Circuit fetch not ok");

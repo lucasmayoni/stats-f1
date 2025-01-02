@@ -5,13 +5,19 @@ import fetchConstructorStandings from "../../api/standings/fetchConstructorStand
 import '../../styles/table.css';
 const CurrentStandings = () => {
   const results = useQuery(["drivers"], fetchCurrentStandings);
-  const driverStandings =
-    results.data?.MRData.StandingsTable.StandingsLists[0].DriverStandings ?? [];
+  const driverStandings = 
+    (results.data?.MRData.StandingsTable?.StandingsLists ?? []).length > 0 
+        ? results.data?.MRData.StandingsTable.StandingsLists[0].DriverStandings 
+        : [];
+
+
 
   const results2 = useQuery(["constructors"], fetchConstructorStandings);
   const constructorStandings =
-    results2.data?.MRData?.StandingsTable.StandingsLists[0]
-      .ConstructorStandings ?? [];
+
+  (results2.data?.MRData.StandingsTable?.StandingsLists ?? []).length > 0 
+  ? results2.data?.MRData.StandingsTable.StandingsLists[0].ConstructorStandings 
+  : [];
 
   return (
     <div>
@@ -31,7 +37,7 @@ const CurrentStandings = () => {
               </tr>
             </thead>
             <tbody>
-              {driverStandings.map((driverInfo: any) => (
+              {driverStandings?.map((driverInfo: any) => (
                 <tr key={driverInfo.Constructors[0].constructorId}>
                   <td>{driverInfo.position}</td>
                   <td>
@@ -59,7 +65,7 @@ const CurrentStandings = () => {
               </tr>
             </thead>
             <tbody>
-              {constructorStandings.map((constructorInfo: any) => (
+              {constructorStandings?.map((constructorInfo: any) => (
                 <tr key={constructorInfo.constructorId}>
                   <td>{constructorInfo.position}</td>
                   <td>{constructorInfo.Constructor.name}</td>

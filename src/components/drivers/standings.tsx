@@ -23,7 +23,7 @@ const DriverStandings = ({
           </tr>
         </thead>
         <tbody>
-          {driverStandings?.MRData.StandingsTable.StandingsLists.map(
+          {driverStandings?.MRData.StandingsTable.StandingsLists?.map(
             (driverInfo) => (
               <tr
                 key={
