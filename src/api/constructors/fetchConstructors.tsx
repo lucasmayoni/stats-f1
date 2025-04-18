@@ -12,7 +12,7 @@ export const fetchConstructors: QueryFunction<
 > = async ({ queryKey }) => {
   const { season } = queryKey[1];
   const apiRes = await fetch(
-    `https://ergast.com/api/f1/${season}/constructors.json`
+    `https://api.jolpi.ca/ergast/f1/${season}/constructors.json`
   );
   if (!apiRes.ok) {
     throw new Error("Constructors fetch not ok");
@@ -25,7 +25,7 @@ export const constructorWithDrivers = async (
   team: string
 ): Promise<IDriverList> => {
   const api = axios.create({
-    baseURL: "https://ergast.com/api/f1",
+    baseURL: "https://api.jolpi.ca/ergast/f1",
   });
   try {
     const response = await api.get(

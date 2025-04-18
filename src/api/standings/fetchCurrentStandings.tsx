@@ -5,7 +5,7 @@ const fetchCurrentStandings: QueryFunction<
   IDriverStandingsLists
 > = async () => {
   const apiRes = await fetch(
-    `https://ergast.com/api/f1/current/driverStandings.json`
+    `https://api.jolpi.ca/ergast/f1/current/driverStandings.json`
   );
   if (!apiRes.ok) {
     throw new Error("Current Standings fetch not ok");
