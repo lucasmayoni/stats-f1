@@ -4,7 +4,7 @@ import { ICircuit } from "../../models/interfaces";
 const fetchCircuit: QueryFunction<ICircuit> = async ({ queryKey }) => {
   const circuitId = queryKey[1];
   const apiRes = await fetch(
-    `https://ergast.com/api/f1/circuits/${circuitId}.json`
+    `https://api.jolpi.ca/ergast/f1/circuits/${circuitId}.json`
   );
 
   if (!apiRes.ok) {

@@ -29,12 +29,15 @@ export const convertFlagSuffix = (nationality: string) => {
     case "British": 
     case "UK": return "GB";
     case "UAE": return "AE";
-    case "Argentina": return "AR";
+    case "Argentina": 
+    case "Argentinian": return "AR";
     case "Australian":
     case "Australia": return "AU";
     case "Austria": return "AT";
     case "Azerbaijan": return "AZ";
+    case "Belgian":
     case "Belgium": return "BE";
+    case "Brazilian":
     case "Brazil": return "BR";
     case "American":
     case "USA": return "US";
@@ -48,6 +51,7 @@ export const convertFlagSuffix = (nationality: string) => {
     case "Dutch": return "NL";
     case "German":
     case "Germany": return "DE";
+    case "Italian":
     case "Italy": return "IT";
     case "Spanish":
     case "Spain": return "ES";
@@ -68,12 +72,15 @@ export const convertFlagSuffix = (nationality: string) => {
     case "Morocco": return "MA";
     case "New Zealand":
     case "New Zealander": return "NZ";
+    case "Polish": return "PL";
     case "Portugal": return "PT";
     case "Qatar": return "QA";
+    case "Russian":
     case "Russia": return "RU";
     case "Saudi Arabia": return "SA";
     case "Singapore": return "SG";
     case "South Africa": return "ZA";
+    case "Swedish":
     case "Sweden": return "SE";
     case "Switzerland": return "CH";
     case "Turkey": return "TR";

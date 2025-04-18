@@ -6,7 +6,7 @@ const fetchDriverStandings: QueryFunction<IDriverStandingsLists> = async ({
 }) => {
   const id = queryKey[1];
   const apiRes = await fetch(
-    `https://ergast.com/api/f1/drivers/${id}/driverStandings.json`
+    `https://api.jolpi.ca/ergast/f1/2024/drivers/${id}/driverStandings.json`
   );
 
   if (!apiRes.ok) {

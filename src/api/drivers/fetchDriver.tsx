@@ -3,7 +3,7 @@ import { IDriver } from "../../models/interfaces";
 
 const fetchDriver: QueryFunction<IDriver> = async ({ queryKey }) => {
   const code = queryKey[1];
-  const apiRes = await fetch(`https://ergast.com/api/f1/drivers/${code}.json`);
+  const apiRes = await fetch(`https://api.jolpi.ca/ergast/f1/drivers/${code}.json`);
 
   if (!apiRes.ok) {
     throw new Error("Driver fetch not ok");
