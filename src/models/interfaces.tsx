@@ -74,6 +74,7 @@ export interface IConstructorStanding {
 
 export interface IConstructorStandingLists {
   MRData: {
+    total?: number;
     StandingsTable: {
       season: number;
       StandingsLists: [

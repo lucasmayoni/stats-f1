@@ -10,14 +10,12 @@ const CurrentStandings = () => {
         ? results.data?.MRData.StandingsTable.StandingsLists[0].DriverStandings 
         : [];
 
-
-
   const results2 = useQuery(["constructors"], fetchConstructorStandings);
-  const constructorStandings =
+  const constructorStandings = 
+    (results2.data?.MRData?.total ?? 0) > 0 
+        ? results2.data?.MRData.StandingsTable?.StandingsLists?.[0]?.ConstructorStandings 
+        : [];
 
-  (results2.data?.MRData.StandingsTable?.StandingsLists ?? []).length > 0 
-  ? results2.data?.MRData.StandingsTable.StandingsLists[0].ConstructorStandings 
-  : [];
 
   return (
     <div>
