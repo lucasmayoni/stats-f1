@@ -37,7 +37,7 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\""
   },
   "engines": {
-    "node": ">=12.x.x <=18.x.x",
+    "node": ">=12.x.x <=20.x.x",
     "npm": ">=6.0.0"
   },
   "overrides": {
